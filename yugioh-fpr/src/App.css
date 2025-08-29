@@ -1,0 +1,19 @@
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.main-container {
+  max-width: 3466px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: 3466px) {
+  .main-container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,21 @@
+.header {
+  background: var(--header-footer);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 143px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 3466px;
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+}
