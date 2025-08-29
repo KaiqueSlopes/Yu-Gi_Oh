@@ -7,14 +7,10 @@ import "./Home.css";
 export function Home() {
   return (
     <div className="home">
-      <div className="banner-container">
-        <Banner />
-      </div>
-      <div className="home-container">
-        <div className="home-content">
-          <Filters />
-          <CardList />
-        </div>
+      <Banner />
+      <div className="main-content-wrapper">
+        <Filters />
+        <CardList />
       </div>
       <Footer />
     </div>

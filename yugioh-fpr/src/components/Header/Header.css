@@ -1,5 +1,5 @@
 .header {
-  background: var(--header-footer);
+  background: #131a0a;
   padding: 0;
   position: sticky;
   top: 0;
@@ -18,4 +18,9 @@
   margin: 0 auto;
   padding: 0 32px;
   width: 100%;
+}
+
+.search-form {
+  max-width: 100%;
+  width: 20%;
 }

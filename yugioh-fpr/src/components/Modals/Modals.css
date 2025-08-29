@@ -1,0 +1,70 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--color-medium);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  border: 2px solid var(--color-light);
+}
+
+.modal-content h2 {
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.modal-content p {
+  color: var(--color-gray);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.modal-button.continue {
+  background-color: var(--color-light);
+  color: var(--color-white);
+}
+
+.modal-button.cart {
+  background-color: var(--color-gray);
+  color: var(--color-dark);
+}
+
+.modal-button.ok {
+  background-color: var(--color-light);
+  color: var(--color-white);
+  width: 100%;
+}
+
+.modal-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}

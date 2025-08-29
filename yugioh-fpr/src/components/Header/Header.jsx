@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../../hooks/useCart";
+import { useCart } from "../../contexts/CartContext";
 import "./Header.css";
 
 export const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { state } = useCart();
-  const cartItemsCount = state.items.length;
+  const { cartItems } = useCart();
+  const cartItemsCount = cartItems.length;
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -18,10 +18,9 @@ export const Header = () => {
       <div className="header-container">
         <Link to="/" className="logo">
           <img
-            src="../public/images/icons/logo.png"
+            src="./public/images/icons/logo.png"
             alt="FPR Yu-Gi-Oh!"
-            width={239}
-            height={143}
+            className="logo-image"
           />
         </Link>
 
@@ -41,8 +40,9 @@ export const Header = () => {
         <Link to="/cart" className="cart-link">
           <span className="cart-icon">
             <img
-              src="../public/images/icons/cart-icon.svg.svg"
-              alt="Icone Carrinho"
+              src="./public/images/icons/cart-icon.svg.svg"
+              alt="Carrinho de Compras"
+              className="cart-icon-image"
             />
           </span>
           {cartItemsCount > 0 && (

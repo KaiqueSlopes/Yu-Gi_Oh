@@ -1,65 +1,57 @@
-import { useReducer, useEffect } from "react";
-import { CartContext } from "./CartContext";
+import { createContext, useContext, useReducer, useEffect } from "react";
 
-function cartReducer(state, action) {
+const CartContext = createContext();
+
+const cartReducer = (state, action) => {
   switch (action.type) {
-    case "LOAD_CART": {
-      return { ...state, items: action.payload };
-    }
-    case "ADD_ITEM": {
-      const existingItem = state.items.find(
+    case "LOAD_CART":
+      return { cartItems: action.payload };
+
+    case "ADD_ITEM":
+      const existingItem = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
-      if (existingItem) {
-        return { ...state, showDuplicateAlert: true };
-      }
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-        showConfirmation: true,
-      };
-    }
-    case "REMOVE_ITEM": {
-      return {
-        ...state,
-        items: state.items.filter((item) => item.id !== action.payload),
-      };
-    }
-    case "CLEAR_CART": {
-      return { ...state, items: [] };
-    }
-    case "CLOSE_MODAL": {
-      return { ...state, showConfirmation: false, showDuplicateAlert: false };
-    }
-    default: {
-      return state;
-    }
-  }
-}
+      if (existingItem) return state;
+      return { cartItems: [...state.cartItems, action.payload] };
 
-const initialState = {
-  items: [],
-  showConfirmation: false,
-  showDuplicateAlert: false,
+    case "REMOVE_ITEM":
+      return {
+        cartItems: state.cartItems.filter((item) => item.id !== action.payload),
+      };
+
+    case "CLEAR_CART":
+      return { cartItems: [] };
+
+    default:
+      return state;
+  }
 };
 
-export function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
+export const CartProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(cartReducer, { cartItems: [] });
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("yugioh-cart");
-    if (storedCart) {
-      dispatch({ type: "LOAD_CART", payload: JSON.parse(storedCart) });
+    const savedCart = localStorage.getItem("yugioh-cart");
+    if (savedCart) {
+      dispatch({ type: "LOAD_CART", payload: JSON.parse(savedCart) });
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("yugioh-cart", JSON.stringify(state.items));
-  }, [state.items]);
+    localStorage.setItem("yugioh-cart", JSON.stringify(state.cartItems));
+  }, [state.cartItems]);
 
   return (
-    <CartContext.Provider value={{ state, dispatch }}>
+    <CartContext.Provider value={{ cartItems: state.cartItems, dispatch }}>
       {children}
     </CartContext.Provider>
   );
-}
+};
+
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart deve ser usado dentro de um CartProvider");
+  }
+  return context;
+};
