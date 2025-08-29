@@ -1,12 +1,67 @@
-# React + Vite
+🃏 Yu-Gi-Oh! - FPR Soluções
+📋 Sobre o Projeto
+Aplicação front-end para e-commerce de cartas Yu-Gi-Oh!, desenvolvida como teste técnico para vaga de Front-end.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Tecnologias
+React 18 + Vite - Framework e build tool
 
-Currently, two official plugins are available:
+React Router DOM - Navegação entre páginas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Context API + useReducer - Gerenciamento de estado global
 
-## Expanding the ESLint configuration
+CSS Vanilla - Estilização customizada
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+LocalStorage - Persistência de dados
+
+API REST - Integração com YGOPRODeck
+
+🏗️ Arquitetura
+
+src/
+├── components/ # Componentes reutilizáveis
+├── contexts/ # Gerenciamento de estado (carrinho)
+├── pages/ # Páginas (Home, Carrinho)
+├── services/ # Integração com API
+├── styles/ # Estilos globais
+└── utils/ # Funções auxiliares
+
+⚡ Funcionalidades
+✅ Listagem de cartas com paginação
+
+✅ Carrinho com badge e persistência
+
+✅ Filtros (atributo, tipo) e busca
+
+✅ Modais de confirmação/aviso
+
+✅ Banner rotativo automático
+
+✅ Layout responsivo (mobile, tablet, desktop)
+
+Layout: O mais fiel possível ao Figma fornecido
+
+🚀 Como Executar
+bash
+
+# Instalar dependências
+
+npm install
+
+# Executar em desenvolvimento
+
+npm run dev
+
+# Build para produção
+
+npm run build
+📦 API Utilizada
+YGOPRODeck API: https://db.ygoprodeck.com/api/v7/cardinfo.php
+
+Recursos: Listagem, filtros, paginação, busca
+
+🔧 Principais Hook's
+useCart() - Gerenciamento do carrinho
+
+useApi() - Requisições à API
+
+useLocalStorage() - Persistência de dados
